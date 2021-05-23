@@ -1,0 +1,32 @@
+{%extends "eventmanagement/layout.html"%}
+{%block body%}
+<div class="mb-3">
+    <div class="container">
+<body>
+    <h1>
+        Welcome {{user.first_name}}
+    </h1>
+    <a href="{%url 'hostevent'%}" class="btn btn-primary"  >Host an event</a><br><br>
+    {%if message%}
+        <div>{{message}}</div>
+    {%endif%}
+    <div class="container p-3 my-3 bg-dark text-info">
+    <h5>Your events-</h5>
+    ------------------------------------------------<br>
+        {% for event in events %}
+            Name of the event- {{event.name}}<br>
+            Event Description- {{event.description}}<br>
+            Event Date- {{event.date}}<br>
+            Category- {{event.category}}<br>
+            No. of bookings till now- {{event.count}}<br><br>
+            <a href="{%url 'deleteevent' event.id%}">Delete event</a><br>
+            --------------------------------------------------<br>
+        {% endfor %}
+        </div>
+
+
+    <a href="{%url 'eventmanagerlogout'%}" class="btn btn-primary" >Logout</a>
+</body>
+    </div>
+</div>
+{%endblock%}

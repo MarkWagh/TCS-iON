@@ -1,0 +1,26 @@
+{%extends "eventmanagement/layout.html"%}
+{%block body%}
+<div class="mb-3">
+    <div class="container">
+        
+<body>
+    <h1> Your upcoming events</h1><br>
+    -------------------------------------------------------------------------------------------------------------------
+    <div class="container p-3 my-3 bg-success text-white">
+    <br>
+    {% for event in events %}
+        {{event.name}}<br>
+        {{event.date}}<br>
+        {{event.time}}<br>
+        {{event.description}}<br>
+    {% endfor %}
+    <br>
+</div>
+    -------------------------------------------------------------------------------------------------------------------
+    <br>
+
+    <a href="{%url 'userindex'%}">Back to Homepage</a><br>
+</div>
+</div>
+</body>
+{% endblock %}

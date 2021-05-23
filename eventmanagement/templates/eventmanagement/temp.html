@@ -1,0 +1,40 @@
+{%extends "eventmanagement/layout.html"%}
+{%block body%}
+<div class="mb-3">
+    <div class="container">
+<body>
+    <h1> Booking Details </h1><br>
+  
+    <div class="container p-3 my-3 bg-dark text-info">
+    <form action="{%url 'confirmevent' event.id %}" method="POST">
+
+        {% csrf_token %}
+            {{ event.name }}<br>  Rs.{{event.cost}}<br>  {{ event.date }}<br>    {{ event.category }}<br>   {{ event.description }}<br>    
+            <label for="number">Number of tickets:</label>
+            <select id="number" name="tickets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select><br><br>
+            <input type="Submit" class="btn btn-primary" value="Confirm Booking" name="event_id"><br>
+    </form><br>
+
+    {% if message %}
+        <div>{{message}}</div>
+    {% endif %}<br>
+</div>
+ <br>
+    <a href="{%url 'userindex'%}">Back to Homepage</a><br>
+    <a href="{%url 'eventmanagerlogout'%}">Logout</a><br>
+
+</body> 
+</div>
+</div>
+{% endblock %}

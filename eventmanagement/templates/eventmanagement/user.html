@@ -1,0 +1,32 @@
+
+{% extends "eventmanagement/layout.html" %}
+{% block body %}
+<body>
+    <div class="mb-3">
+        <div class="container">
+    <h1>
+        Welcome {{user.first_name}} {{user.last_name}}<br>
+    </h1><br>
+    <a href="{%url 'userevent'%}">Your upcoming events</a><br><br>
+    ---------------------------------------------<br><br>
+    
+    {% for event in events %}
+    <div class="container p-3 my-3 bg-dark text-white">
+        <div class="container-sm">
+        <form action="{%url 'bookevent' event.id %}" method="POST">
+        {% csrf_token %}
+            {{ event.name }}<br>   Rs.{{event.cost}}<br>  {{ event.date }}<br>    {{ event.category }}<br>   {{ event.description }}   <br>
+            <input type="Submit" class="btn btn-primary" value="Book now!" name="event_id">
+        </form>
+        {% comment %} <a href="{%url 'bookevent' %}">Book Now!</a><br> {% endcomment %}
+        <br>
+    </div>
+    </div>
+    {% endfor %}
+    <br>
+    ----------------------------------------------<br>
+    <a href="{%url 'userlogout'%}" class="btn btn-primary">Logout</a>
+    </div>
+    </div>
+</body>
+{% endblock %}
